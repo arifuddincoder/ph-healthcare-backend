@@ -4,7 +4,7 @@ import app from "./app";
 
 const bootstrap = () => {
 	try {
-		app.listen(5050, () => {
+		app.listen(process.env.PORT, () => {
 			console.log(`Server is running on http://localhost:5050`);
 		});
 	} catch (error) {
