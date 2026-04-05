@@ -1,3 +1,21 @@
+// {
+//   "compilerOptions": {
+//     "module": "ESNext",
+//     "moduleResolution": "bundler",
+//     "target": "ES2023",
+//     "rootDir": "./src",
+//     "outDir": "./dist",
+//     "strict": true,
+//     "esModuleInterop": true,
+//     "skipLibCheck": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "ignoreDeprecations": "6.0",
+//     "types": ["node"]
+//   },
+//   "include": ["src"],
+//   "exclude": ["node_modules","dist"]
+// }
+
 {
   "compilerOptions": {
     "module": "ESNext",
@@ -13,5 +31,9 @@
     "types": ["node"]
   },
   "include": ["src"],
-  "exclude": ["node_modules","dist"]
+  "exclude": ["node_modules", "dist"],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
 }
