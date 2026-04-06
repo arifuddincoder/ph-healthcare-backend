@@ -13,7 +13,7 @@ const loadEnvVariables = (): EnvConfig => {
 	const requireEnvVariable = ["NODE_ENV", "PORT", "DATABASE_URL", "BETTER_AUTH_SECRET", "BETTER_AUTH_URL"];
 
 	requireEnvVariable.forEach((variable) => {
-		if (!process.env["variable"]) {
+		if (!process.env[variable]) {
 			throw new Error(`Environment variable ${variable} is required but not set in .env file.`);
 		}
 	});
