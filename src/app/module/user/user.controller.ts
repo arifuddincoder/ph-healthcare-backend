@@ -10,7 +10,7 @@ const createDoctor = catchAsync(async (req: Request, res: Response) => {
 	sendResponse(res, {
 		httpStatusCode: status.CREATED,
 		success: true,
-		message: "Patient register successfully",
+		message: "Doctor created successfully",
 		data: result,
 	});
 });

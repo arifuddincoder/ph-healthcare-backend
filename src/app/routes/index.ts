@@ -1,12 +1,14 @@
 import { Router } from "express";
 import { SpecialtyRoutes } from "../module/specialty/specialty.route";
-import { authRoutes } from "../module/auth/auth.router";
-import { userRoutes } from "../module/user/user.route";
+import { AuthRoutes } from "../module/auth/auth.router";
+import { UserRoutes } from "../module/user/user.route";
+import { DoctorRoutes } from "../module/doctor/doctor.route";
 
 const router = Router();
 
 router.use("/specialties", SpecialtyRoutes);
-router.use("/auth", authRoutes);
-router.use("/doctors", userRoutes);
+router.use("/auth", AuthRoutes);
+router.use("/users", UserRoutes);
+router.use("/doctors", DoctorRoutes);
 
 export const IndexRoutes = router;
