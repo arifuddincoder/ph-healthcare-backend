@@ -9,6 +9,7 @@ import { sendResponse } from "../../shared/sendResponse";
 import { CookieUtils } from "../../utils/cookie";
 import { tokenUtils } from "../../utils/token";
 import { AuthService } from "./auth.service";
+import { ISessionUser } from "./auth.interface";
 
 const registerPatient = catchAsync(async (req: Request, res: Response) => {
 	const payload = req.body;
@@ -143,27 +144,27 @@ const logoutUser = catchAsync(async (req: Request, res: Response) => {
 	});
 });
 
-// const verifyEmail = catchAsync(async (req: Request, res: Response) => {
-// 	const { email, otp } = req.body;
-// 	await AuthService.verifyEmail(email, otp);
+const verifyEmail = catchAsync(async (req: Request, res: Response) => {
+	const { email, otp } = req.body;
+	await AuthService.verifyEmail(email, otp);
 
-// 	sendResponse(res, {
-// 		httpStatusCode: status.OK,
-// 		success: true,
-// 		message: "Email verified successfully",
-// 	});
-// });
+	sendResponse(res, {
+		httpStatusCode: status.OK,
+		success: true,
+		message: "Email verified successfully",
+	});
+});
 
-// const forgetPassword = catchAsync(async (req: Request, res: Response) => {
-// 	const { email } = req.body;
-// 	await AuthService.forgetPassword(email);
+const forgetPassword = catchAsync(async (req: Request, res: Response) => {
+	const { email } = req.body;
+	await AuthService.forgetPassword(email);
 
-// 	sendResponse(res, {
-// 		httpStatusCode: status.OK,
-// 		success: true,
-// 		message: "Password reset OTP sent to email successfully",
-// 	});
-// });
+	sendResponse(res, {
+		httpStatusCode: status.OK,
+		success: true,
+		message: "Password reset OTP sent to email successfully",
+	});
+});
 
 const resetPassword = catchAsync(async (req: Request, res: Response) => {
 	const { email, otp, newPassword } = req.body;
@@ -238,8 +239,8 @@ export const AuthController = {
 	getNewToken,
 	changePassword,
 	logoutUser,
-	// verifyEmail,
-	// forgetPassword,
+	verifyEmail,
+	forgetPassword,
 	resetPassword,
 	googleLogin,
 	googleLoginSuccess,
