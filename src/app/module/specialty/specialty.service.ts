@@ -2,26 +2,29 @@ import { Specialty } from "../../../generated/prisma/client";
 import { prisma } from "../../lib/prisma";
 
 const createSpecialty = async (payload: Specialty): Promise<Specialty> => {
+	// throw new Error("Testing error handling in create specialty service");
 	const specialty = await prisma.specialty.create({
 		data: payload,
 	});
+
 	return specialty;
 };
 
-const getAllSpecialty = async (): Promise<Specialty[]> => {
+const getAllSpecialties = async (): Promise<Specialty[]> => {
 	const specialties = await prisma.specialty.findMany();
 	return specialties;
 };
 
 const deleteSpecialty = async (id: string): Promise<Specialty> => {
-	const result = await prisma.specialty.delete({
+	const specialty = await prisma.specialty.delete({
 		where: { id },
 	});
-	return result;
+
+	return specialty;
 };
 
-export const SpecialtyServices = {
+export const SpecialtyService = {
 	createSpecialty,
-	getAllSpecialty,
+	getAllSpecialties,
 	deleteSpecialty,
 };
