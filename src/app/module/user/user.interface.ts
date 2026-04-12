@@ -1,38 +1,4 @@
-/*
-model Doctor {
-  id            String  @id @default(uuid(7))
-  name          String
-  email         String  @unique
-  profilePhoto  String?
-  contactNumber String?
-  address       String?
-
-  registrationNumber  String? @unique
-  experience          Int     @default(0)
-  gender              Gender?
-  appointmentFee      Float?
-  qualification       String?
-  currentWorkingPlace String?
-  designation         String?
-  averageRating       Float   @default(0.0)
-
-  isDeleted Boolean   @default(false)
-  deletedAt DateTime?
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-
-  userId      String            @unique
-  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  specialties DoctorSpecialty[]
-
-  @@index([email], name: "idx_doctor_email")
-  @@index([isDeleted], name: "idx_doctor_isDeleted")
-  @@map("doctor")
-}
-*/
-
 import { Gender } from "../../../generated/prisma/enums";
-
 export interface ICreateDoctorPayload {
 	password: string;
 	doctor: {
@@ -41,13 +7,23 @@ export interface ICreateDoctorPayload {
 		profilePhoto?: string;
 		contactNumber?: string;
 		address?: string;
-		registrationNumber?: string;
+		registrationNumber: string;
 		experience?: number;
-		gender?: Gender;
-		appointmentFee?: number;
-		qualification?: string;
-		currentWorkingPlace?: string;
-		designation?: string;
+		gender: Gender;
+		appointmentFee: number;
+		qualification: string;
+		currentWorkingPlace: string;
+		designation: string;
 	};
 	specialties: string[];
+}
+export interface ICreateAdminPayload {
+	password: string;
+	admin: {
+		name: string;
+		email: string;
+		profilePhoto?: string;
+		contactNumber?: string;
+	};
+	role: "ADMIN" | "SUPER_ADMIN";
 }
